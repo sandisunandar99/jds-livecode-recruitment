@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql
+    ports:
+        - "3307:3306"
+    environment:
+        MYSQL_ROOT_PASSWORD: secret
+        MYSQL_DATABASE: express
+        MYSQL_USER: express
+        MYSQL_PASSWORD: secret  
+    networks:
+        - node-api-jds
+
+  api:
+    image: node-api
+    build:
+        context: .
+        dockerfile: Dockerfile
+    volumes:
+        - .:/app
+        - /app/node_modules
+    ports:
+        - 3000:3000
+    links:
+        - mysql
+    restart: always
+    environment:
+        APP_ENV: local
+        APP_DEBUG: 'true'
+        APP_KEY: SomeRandomKey!!!
+        APP_LOCALE: id
+        APP_FALLBACK_LOCALE: id
+        DB_CONNECTION: mysql
+        DB_HOST: db
+        DB_DATABASE: lumen
+        DB_USERNAME: lumen
+        DB_PASSWORD: secret
+    networks:
+        - node-api-jds
+
+networks:
+    node-api-jds:
+      driver: bridge

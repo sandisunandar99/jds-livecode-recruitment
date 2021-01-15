@@ -27,7 +27,7 @@ php:
     XDEBUG_CONFIG: remote_host=host.docker.internal
     PHP_IDE_CONFIG: serverName=localhost
 db:
-  image: mysql
+  image: mysql:5.7
   ports:
     - "3306:3306"
   environment:

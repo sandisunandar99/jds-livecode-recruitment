@@ -24,7 +24,6 @@ marshmallow==3.10.0
 marshmallow-sqlalchemy==0.24.1
 mccabe==0.6.1
 numpy==1.19.4
-pandas==1.2.0
 passlib==1.7.4
 psycopg2==2.8.6
 psycopg2-binary==2.8.6

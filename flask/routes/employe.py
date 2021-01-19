@@ -14,7 +14,7 @@ def create():
         # prepare json data
         json_request = request.get_json(silent=True)
 
-        # insert dataset_class
+        # insert employe
         res, employeResult = employe.create(json_request)
 
         if res:

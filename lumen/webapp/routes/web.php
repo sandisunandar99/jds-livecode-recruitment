@@ -15,3 +15,5 @@ $router->get('/', function () use ($router) {
     return response()->json("Welcome to JDS Recruitmen");
 });
 
+$router->get('/test', 'TestController@test');
+$router->get('/cek', 'TestController@cekConnection');

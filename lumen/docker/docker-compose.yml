@@ -1,5 +1,6 @@
 nginx:
   build: nginx
+  container_name: lumen_nginx
   command: nginx -g "daemon off;"
   links:
     - php
@@ -7,6 +8,7 @@ nginx:
     - "8181:80"
 php:
   build: php
+  container_name: lumen_php
   volumes:
     - ../webapp:/var/www
   working_dir: /var/www/public
@@ -28,6 +30,7 @@ php:
     PHP_IDE_CONFIG: serverName=localhost
 db:
   image: mysql:5.7
+  container_name: lumen_mysql
   ports:
     - "3306:3306"
   environment:
@@ -37,6 +40,7 @@ db:
     MYSQL_PASSWORD: secret
 phpmyadmin:
   image: phpmyadmin/phpmyadmin
+  container_name: lumen_pma
   restart: always
   links: 
     - db

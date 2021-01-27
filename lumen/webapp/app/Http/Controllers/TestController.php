@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Test;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
@@ -17,27 +18,18 @@ class TestController extends Controller
         //
     }
 
-    public function test(){
+    public function test(Request $req){
         // ini adalah variable payload sesuai sesuai soal yang di bubuhkan
         $payload = $this->payload();
+        // $payload = $req->all();
         $date = Date('Y-m-d');
 
         try {
-            Test::create([
-                'nama' => $payload['nama'],
-                'nik' => $payload['nik'],
-                'no_tlp' => $payload['no_tlp'],
-                'email' => $payload['email'],
-                'alamat' => $payload['alamat'],
-                'tgl_lahir' => $date,
-                'kode_karyawan' => 'JDS21212121212121'
-            ]);
+            $sql = (array('text' => 'simpen data nanti di variable $sql ini ya,, hapus aja text array nya'));
 
-
-            $response = response()->json(array('status' => true, 'msg' => 'Successfully Created'), 200);
-
+            $response = response()->json(array('code' => 200, 'message' => 'Successfully Created', 'data' => $sql), 200);
         } catch (\Throwable $th) {
-            $response = response()->json(array('message' => 'Error'), 500);
+            $response = response()->json(array('code' => 500, 'message' => 'Error'), 500);
         }
 
         return $response;

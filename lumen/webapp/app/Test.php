@@ -13,15 +13,12 @@ class Test extends Model
      */
 
     protected $fillable = [
-        // 'id',
         'nama',
         'nik',
         'no_tlp',
         'email',
         'alamat',
         'tgl_lahir',
-        'kode_karyawan',
-        // 'created_at',
-        // 'updated_at'
+        'kode_karyawan'
     ];
 }
